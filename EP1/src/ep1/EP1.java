@@ -6,7 +6,7 @@ import java.util.Scanner;
 
     INTEGRANTES:
     - Mario Burgos Gorostieta
-    - IsaÃ­as GarcÃ­a Mendoza
+    - Isaías García Mendoza
 
     PRACTICA:
     EP1. Manejo de errores y excepciones
@@ -23,14 +23,19 @@ public class EP1 {
         String texto;
         Validaciones comi = new Validaciones();
         
-        System.out.print("printf(");
-        texto = sc.next();
-        
-        try {
+        //System.out.print("printf(");
+        texto = sc.nextLine();
+        if(texto.charAt(0) == 'ñ')
+        {
+            System.out.println("eeeeñeeeee");
+        }
+        System.out.println(texto);
+        /*try {
             comi.validacion(texto);
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }
     
 }

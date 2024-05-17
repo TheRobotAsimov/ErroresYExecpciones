@@ -5,15 +5,12 @@ public class Logica {
     public Logica() {
     }
     
-    // while
-    public boolean validarWhile(String textoArchivo){
-        System.out.println("While");
-        return true;
-    }
-    
-    // do while
-    public boolean validarDoWhile(String textoArchivo){
-        System.out.println("Do-While");
-        return true;
+    //validar(textoArchivo, nombreestructura, estructura)
+    public void validar(String nombreEstructura, String estructura, String textoArchivo) throws Exception{
+        if(textoArchivo.equals(estructura)){
+            System.out.println("Estructura " + nombreEstructura + " validada");
+        } else {
+            throw new Exception("Estructura " + nombreEstructura + " NO valida. Le falta parentesis o llaves o contiene texto demas");
+        }
     }
 }

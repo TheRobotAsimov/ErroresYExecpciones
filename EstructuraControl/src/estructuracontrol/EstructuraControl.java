@@ -21,30 +21,34 @@ import java.util.List;
 public class EstructuraControl {
 
     public static void main(String[] args) {
+        
+        
+        try {
+            analizarEstructura();
+        } catch (IOException ex) {
+            System.out.println("Problemas con archivo: "+ ex.getMessage());
+        } catch (Exception e){
+            System.out.println("Error: "+ e.getMessage());
+        }
+    }
+    
+    public static void analizarEstructura() throws IOException, Exception{
         String nombreArchivo = "./EstructuraDeControl.txt";
         Repositorio repo = new Repositorio(nombreArchivo);
         Logica log = new Logica();
         String textoArchivo;
         
-        char letra;
-        
-        try {
-            textoArchivo = repo.getTextoArchivo();
-            letra = textoArchivo.charAt(0);
-            switch (letra) {
-                case 'w':
-                    log.validarWhile(textoArchivo);
-                    break;
-                case 'd':
-                    log.validarDoWhile(textoArchivo);
-                    break;
-                default:
-                    System.out.println("Estructura no valida");
+        textoArchivo = repo.getTextoArchivo();
+            if(textoArchivo.contains("do")){
+                textoArchivo = textoArchivo.replaceAll("\\s", "");
+                log.validar("Do-While", "do{}while();", textoArchivo);
+            } else if(textoArchivo.contains("while")){
+                textoArchivo = textoArchivo.replaceAll("\\s", "");
+                log.validar("While", "while(){}", textoArchivo);
+            } else {
+                throw new Exception("Estructura no reconocida");
             }
+            
             System.out.println(textoArchivo);
-        } catch (IOException ex) {
-            System.out.println("Problemas con archivo: "+ ex.getLocalizedMessage());
-        }
     }
-    
 }
